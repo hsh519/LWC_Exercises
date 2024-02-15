@@ -1,17 +1,18 @@
 {
-	"orgName": "AW Computing",
+	"orgName": "DEX602 Hong",
 	"edition": "Developer",
-    "settings": {
-        "userManagementSettings": {
-             "enableNewProfileUI": true 
-        },
-        "lightningExperienceSettings": {
+	"settings": {
+		"userManagementSettings": {
+			"enableNewProfileUI": true
+		},
+		"lightningExperienceSettings": {
 			"enableS1DesktopEnabled": true
-        },
-        "mobileSettings": {
-        },
-        "languageSettings": {
-            "enableTranslationWorkbench": true
-        }
-    }
+		},
+		"mobileSettings": {
+			"enableS1EncryptedStoragePref2": false
+		},
+		"languageSettings": {
+			"enableTranslationWorkbench": true
+		}
+	}
 }

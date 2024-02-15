@@ -3,3 +3,4 @@
 .sfdx/*
 testPush/*
 jsconfig.json
+.sf/orgs

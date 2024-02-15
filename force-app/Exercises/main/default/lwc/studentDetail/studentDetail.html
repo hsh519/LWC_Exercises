@@ -1,0 +1,16 @@
+<template>
+	<!-- todo #8: use the cardTitle getter to display a dynamic title for the lightning-card -->
+	<lightning-card title={cardTitle}>
+		<template lwc:if={wiredStudent.error}>
+			<div class="slds-var-p-horizontal_medium">
+				<c-error-panel type="inlineMessage" errors={wiredStudent.error}></c-error-panel>
+			</div>
+		</template>
+
+		<template lwc:if={wiredStudent.data}>
+			<div class="slds-var-p-horizontal_medium">
+				<!-- this will be filled out during the lab -->
+			</div>
+		</template>
+	</lightning-card>
+</template>
