@@ -1,10 +1,34 @@
 <template>
-	<lightning-layout>
-		<lightning-layout-item padding="around-small" size="8">
-			<c-student-browser></c-student-browser>
+	<lightning-layout horizontal-align="space" multiple-rows>
+		<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="3" large-device-size="2">
+			<c-aw-navigation onnavitemselected={handleNavItemSelected}></c-aw-navigation>
 		</lightning-layout-item>
-		<lightning-layout-item padding="around-small" size="4">
-			<c-student-detail></c-student-detail>
-		</lightning-layout-item>
+
+		<template lwc:if={studentBrowserView}>
+			<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="5" large-device-size="7">
+				<c-student-browser></c-student-browser>
+			</lightning-layout-item>
+			<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="4" large-device-size="3">
+				<c-student-detail></c-student-detail>
+			</lightning-layout-item>
+		</template>
+
+		<template lwc:elseif={tripReportView}>
+			<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="9" large-device-size="10">
+				<lightning-card title="Trip Reports will go here"></lightning-card>
+			</lightning-layout-item>
+		</template>
+
+		<template lwc:elseif={certifiedStudentsView}>
+			<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="9" large-device-size="10">
+				<c-certified-student-list certification-name={certificationName} certification-id={certificationId}> </c-certified-student-list>
+			</lightning-layout-item>
+		</template>
+
+		<template lwc:else>
+			<lightning-layout-item padding="around-small" size="10">
+				<lightning-card title="Cert Popularity will go here"></lightning-card>
+			</lightning-layout-item>
+		</template>
 	</lightning-layout>
 </template>
