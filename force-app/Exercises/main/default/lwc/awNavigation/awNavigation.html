@@ -9,7 +9,7 @@
 
 			<lightning-vertical-navigation-section label="Certification">
 				<lightning-vertical-navigation-overflow>
-					<template for:each={certification} for:item="cert">
+					<template for:each={certifications} for:item="cert">
 						<lightning-vertical-navigation-item key={cert.Id} label={cert.Name} name={cert.compoundKey}></lightning-vertical-navigation-item>
 					</template>
 				</lightning-vertical-navigation-overflow>

@@ -2,6 +2,7 @@ import getCertifiedStudents from "@salesforce/apex/CertifiedStudentList.getCerti
 import deleteStudentCertification from "@salesforce/apex/CertifiedStudentList.deleteStudentCertification";
 import { LightningElement, api, wire } from "lwc";
 import { refreshApex } from "@salesforce/apex";
+import Utils from "c/utils";
 
 export default class CertifiedStudentList extends LightningElement {
 	@api certificationName = "";
@@ -25,12 +26,12 @@ export default class CertifiedStudentList extends LightningElement {
 		{
 			label: "Email",
 			fieldName: "email",
-			type: "text"
+			type: "email"
 		},
 		{
 			label: "Phone",
 			fieldName: "phone",
-			type: "text"
+			type: "phone"
 		}
 	];
 
@@ -53,8 +54,8 @@ export default class CertifiedStudentList extends LightningElement {
 	}
 
 	onRowSelection(event) {
-		const numSelected = event.detail.seletedRows.length;
-		this.dtnGroupDisabled = numSelected === 0;
+		const numSelected = event.detail.selectedRows.length;
+		this.btnGroupDisabled = numSelected === 0;
 	}
 
 	getSelectedIds() {
@@ -68,8 +69,10 @@ export default class CertifiedStudentList extends LightningElement {
 
 		switch (btnClicked) {
 			case "btnEmail":
+				this.notAvailable();
 				break;
 			case "btnSendCert":
+				this.notAvailable();
 				break;
 			case "btnDelete":
 				this.onDelete();
@@ -87,5 +90,9 @@ export default class CertifiedStudentList extends LightningElement {
 			.catch((error) => {
 				this.error = error;
 			});
+	}
+
+	notAvailable() {
+		Utils.showModal(this, "Not Available", "This feature is currnetly unavailable");
 	}
 }
