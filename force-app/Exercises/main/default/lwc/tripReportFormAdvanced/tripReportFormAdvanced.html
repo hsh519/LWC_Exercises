@@ -1,0 +1,27 @@
+<template>
+	<lightning-card title={formTitle}>
+		<form class="slds-form_stacked slds-var-p-around_medium">
+			<!-- form controls go here-->
+			<lightning-combobox name="instructor" label="Instructor" options={instructors} value={instructorId} onchange={onInstructorChange} placeholder="Select an instructor">
+			</lightning-combobox>
+			<lightning-input onchange={onLocationNameChange} type="text" name="locationName" label="Location Name" value={locationName}></lightning-input>
+			<lightning-input onchange={onDateVisitedChange} type="date" name="dateVisited" label="Date Visited" value={dateVisited}></lightning-input>
+			<lightning-radio-group onchange={onReviewTypeChange} type="button" name="reviewType" label="Review of:" options={reviewTypes} value={reviewType}></lightning-radio-group>
+			<lightning-slider
+				onchange={onRatingChange}
+				label="Quality Rating"
+				step="1"
+				min="1"
+				max="5"
+				title="Higher score indicates higher quality"
+				value={rating}
+			></lightning-slider>
+			<lightning-input-rich-text disabled-categories="FORMAT_FONT" label="Review:" label-visible value={review} onchange={onReviewChange}></lightning-input-rich-text>
+
+			<div class="slds-text-align_center slds-var-m-top_medium">
+				<lightning-button variant="brand" label="Save" onclick={onSave} class="slds-var-m-right_x-small"></lightning-button>
+				<lightning-button label="Cancel"></lightning-button>
+			</div>
+		</form>
+	</lightning-card>
+</template>
