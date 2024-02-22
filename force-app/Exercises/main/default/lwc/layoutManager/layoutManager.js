@@ -12,6 +12,7 @@ export default class LayoutManager extends LightningElement {
 	certificationId = 0;
 	modalHeader = "";
 	modalContent = "";
+	loading = true;
 
 	connectedCallback() {
 		Utils.showToast(this, "Welcome", "Don't forget to check back here for updated class schedules and assignments", "info");
@@ -22,6 +23,14 @@ export default class LayoutManager extends LightningElement {
 		this.modalContent = event.detail.content;
 		const modal = this.template.querySelector("c-modal");
 		modal.show();
+	}
+
+	handleLoding() {
+		this.loading = true;
+	}
+
+	handleDoneLoading() {
+		this.loading = false;
 	}
 
 	closeModal() {

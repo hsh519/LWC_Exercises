@@ -31,12 +31,20 @@ export default class StudentBrowser extends NavigationMixin(LightningElement) {
 		}
 	];
 
+	students = [];
+
 	@wire(getStudents, { instructorId: "$selectedInstructorId", courseDeliveryId: "$selectedDeliveryId" })
-	students;
+	wired_getStudents(result) {
+		if (result.data || result.error) {
+			this.students = result;
+			this.dispatchEvent(new CustomEvent("doneloading", { bubbles: true, composed: true }));
+		}
+	}
 
 	handleFilterChange(event) {
 		this.selectedInstructorId = event.detail.instructorId;
 		this.selectedDeliveryId = event.detail.deliveryId;
+		this.dispatchEvent(new CustomEvent("loading", { bubbles: true, composed: true }));
 	}
 
 	handleStudentSelected(event) {
